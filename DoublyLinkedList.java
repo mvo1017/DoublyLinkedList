@@ -6,52 +6,64 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     private int length;
 
 
-/** Constructor for a Doubly Linked List.
- * able to access the element in front and behind current element
- */
+    /** Constructor for a Doubly Linked List.
+    * able to access the element in front and behind current element
+    */
+    //MONG
     public DoublyLinkedList() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     } //DoublyLinkedList
-/**
- * 
- * @param item
- */
+
+    /**
+    *  Item is inserted into list, maintaining sorted order.
+    * @param item
+    */
+    //MONG
     public void insertItem(T item) {
         NodeType<T> newNode = new NodeType<>(item);
 
-        // If the list is empty
-        if (head == null) {
-            head = newNode;
-            tail = newNode;
+        NodeType<T> insert = new NodeType<>();
+        insert.info = item;
+        NodeType<T> temp = head;
+
+        if (length == 0) {
+            head = insert;
+            length++;
             return;
-        }
+        } //initialize head for empty list
 
-        // If the newNode's info is less than or equal to head's info
-        if (newNode.info.compareTo(head.info) <= 0) {
-            newNode.next = head;
-            head.back = newNode;
-            head = newNode;
+        if (item.compareTo(head.info) < 0) {
+            temp.back = insert;
+            insert.next = temp;
+            head = insert;
+            length++;
             return;
-        }
+        } //if item is less than head
 
-        NodeType<T> current = head;
-        while (current.next != null && current.next.info.compareTo(newNode.info) < 0) {
-            current = current.next;
-        }
+        while (temp.next != null && item.compareTo(temp.info) > 0) {
+            temp = temp.next;
+        } //while
 
-        newNode.next = current.next;
-        if (current.next != null) {
-            newNode.next.back = newNode;
-        }
-        current.next = newNode;
-        newNode.back = current;
+        if (item.compareTo(temp.info) == 0) {
+            System.out.println("Item already exists");
+            return;
+        } //checking for duplicates
 
-        // Adjust tail if necessary
-        if (newNode.next == null) {
-            tail = newNode;
-        }
+        if (temp.next == null && item.compareTo(temp.info) > 0) {
+            temp.next = insert;
+            insert.back = temp;
+            length++;
+            return;
+        } //if item should be at end of list
+
+        //inserting in the middle of list
+        insert.next = temp;
+        insert.back = temp.back;
+        temp.back = insert;
+
+
     } //insert
 
     public void deleteItem(T item) {
