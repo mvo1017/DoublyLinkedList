@@ -20,7 +20,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     */
     //MONG
     public void insertItem(T item) {
-        NodeType<T> newNode = new NodeType<>(item);
 
         NodeType<T> insert = new NodeType<>();
         insert.info = item;
@@ -56,10 +55,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             return;
         } //if item should be at end of list
 
-        //inserting in the middle of list
+        //inserting in the middle of list. general case
         insert.next = temp;
         insert.back = temp.back;
         temp.back = insert;
+        length++;
 
 
     } //insert
@@ -82,6 +82,20 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     public void printReverse() {
 
+        NodeType<T> temp = head;
+        for (int i = 0; i < length - 1; i++) {
+            temp = temp.next;
+        } //traverse to last node
+
+        for (int i = 0; i < length; i++) {
+            System.out.print(temp.info + " ");
+
+            if (temp.back != null) {
+            temp = temp.back;
+            } //if there is a node back (for error avoidance)
+
+        } //print in reverse
+
     } //printReverse
 
     public void deleteSubsection() {
@@ -89,6 +103,25 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     } //deleteSubsection
 
     public void reverseList() {
+        if (length == 1) {
+            return;
+        } //do nothing if only one item in list
+
+        NodeType<T> temp = head;
+
+        for (int i = 0; i < length - 1; i++) {
+            temp = temp.next;
+        } //traverse to end of list
+
+        head = temp; //set end of list to head
+
+        for (int i = 0; i < length; i++) {
+            if (temp.back != null) {
+                temp.next = temp.back;
+                temp.back.back = temp;
+                temp = temp.next;
+            }
+        }
 
     } //reverseList
 
