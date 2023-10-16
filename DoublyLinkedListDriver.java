@@ -85,34 +85,47 @@ public class DoublyLinkedListDriver {
 
         while (running) {
             if (command.equals("i")) {
-
+                
             } //insert value
 
-            if (command.equals("d")) {
+            else if (command.equals("d")) {
 
             } //delete value
 
-            if (command.equals("p")) {
+            else if (command.equals("p")) {
 
             }  //print list
 
-            if (command.equals("l")) {
+            else if (command.equals("l")) {
 
             } //length
 
-            if (command.equals("t")) {
+            else if (command.equals("t")) {
 
             } //print reverse
 
-            if (command.equals("r")) {
+            else if (command.equals("r")) {
 
             } //reverse list
 
-            if (command.equals("i"))
+            else if (command.equals("b")) {
 
+            } //delete subsection
+
+            else if (command.equals("s")) {
+
+            } //swap alternate
+
+            else if (command.equals("q")) {
+                running = false;
+            } //quit program
+
+            else {
+                System.out.println("Invalid choice! Please try again.");
+            } //invalid input
 
         } //while
-System.out.println("Exiting program.\n");
+System.out.println("Exiting program...\n");
 scanner.close();
 System.exit(0);
 
