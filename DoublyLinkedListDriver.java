@@ -76,7 +76,7 @@ System.out.println("/nCommands: /n(i) - Insert value/n(d) - Delete value/n(p) - 
 
         System.out.print("Enter a command: ");
 
-        String command = user.next();
+        String command = scanner.next();
 
         boolean running = true;
 
