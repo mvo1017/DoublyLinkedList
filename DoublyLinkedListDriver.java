@@ -10,7 +10,7 @@ public class DoublyLinkedListDriver {
 
 
     String fileName;
-s   witch(listType) {
+    switch(listType) {
     case "i":
     fileName = "int-input.txt";
     break;
@@ -109,7 +109,6 @@ System.out.println("/nCommands: /n(i) - Insert value/n(d) - Delete value/n(p) - 
 
 
         } //while
-        
 System.out.println("Exiting program.\n");
 scanner.close();
 System.exit(0);
