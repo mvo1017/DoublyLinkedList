@@ -2,7 +2,6 @@
 public class DoublyLinkedList<T extends Comparable<T>> {
 
     private NodeType<T> head;
-    private NodeType<T> tail;
     private int length;
 
 
@@ -12,7 +11,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     //MONG
     public DoublyLinkedList() {
         this.head = null;
-        this.tail = null;
         this.length = 0;
     } //DoublyLinkedList
 
