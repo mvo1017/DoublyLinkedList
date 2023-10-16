@@ -26,53 +26,56 @@ public class DoublyLinkedListDriver {
     } 
 
 
-DoublyLinkedList<?> list;
-try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-String line;
-switch(listType) {
-case "i":
-DoublyLinkedList<Integer> intList = new DoublyLinkedList<>();
-while ((line = br.readLine()) != null) {
-for(String item : line.split("\\s+")) {
-intList.insertItem(Integer.parseInt(item));
-}
-}
-list = intList;
-break;
+    DoublyLinkedList<?> list;
+    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+    String line;
+    switch(listType) {
 
+    //creating list for integers    
+    case "i":
+    DoublyLinkedList<Integer> intList = new DoublyLinkedList<>();
+    while ((line = br.readLine()) != null) {
+        for(String item : line.split("\\s+")) {
+            intList.insertItem(Integer.parseInt(item));
+        } //for
+    } //while
+    list = intList;
+    break;
 
-case "d":
-DoublyLinkedList<Double> doubleList = new DoublyLinkedList<>();
-while ((line = br.readLine()) != null) {
-for(String item : line.split("\\s+")) {
-doubleList.insertItem(Double.parseDouble(item));
-}
-}
-list = doubleList;
-break;
+    //creating list for doubles
+    case "d":
+    DoublyLinkedList<Double> doubleList = new DoublyLinkedList<>();
+    while ((line = br.readLine()) != null) {
+        for(String item : line.split("\\s+")) {
+            doubleList.insertItem(Double.parseDouble(item));
+        } //for
+    } //while
+    list = doubleList;
+    break;
 
+    //creating list for Strings
+    case "s":
+    DoublyLinkedList<String> stringList = new DoublyLinkedList<>();
+    while ((line = br.readLine()) != null) {
+    stringList.insertItem(line);
+    } //while
+    list = stringList;
+    break;
 
-case "s":
-DoublyLinkedList<String> stringList = new DoublyLinkedList<>();
-while ((line = br.readLine()) != null) {
-stringList.insertItem(line);
-}
-list = stringList;
-break;
+    default:
+    System.out.println("Invalid choice!");
+    return;
+    } //switch
 
+    } catch(IOException e) {
+    System.out.println("Error reading file: " + e.getMessage());
+    return;
+    }
 
-default:
-System.out.println("Invalid choice!");
-return;
-}
-} catch(IOException e) {
-System.out.println("Error reading file: " + e.getMessage());
-return;
-}
+    list.print();
 
-list.print();
-
-System.out.println("/nCommands: /n(i) - Insert value/n(d) - Delete value/n(p) - Print list/n(l) - Length/n(t) - Print reverse/n(r) - Reverse list/n(b) - Delete Subsection/n(s) - Swap Alternate/n(q) - Quit program");
+    //list of commands for user
+    System.out.println("/nCommands: /n(i) - Insert value/n(d) - Delete value/n(p) - Print list/n(l) - Length/n(t) - Print reverse/n(r) - Reverse list/n(b) - Delete Subsection/n(s) - Swap Alternate/n(q) - Quit program");
 
         System.out.print("Enter a command: ");
 
