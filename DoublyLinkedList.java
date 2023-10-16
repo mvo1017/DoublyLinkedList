@@ -64,14 +64,25 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     } //insert
 
+    /**
+    * Node that contains item is removed from list.
+    * If item is not present, print a message.
+    * @param item
+    */
     public void deleteItem(T item) {
 
     } //deleteItem
 
+    /**
+    * @return length of the list.
+    */
     public int length() {
-    return length;  
+        return length;  
     } //length
 
+    /**
+    * Items in the list are printed to standard output.
+    */
     public void print() {
         NodeType<T> current = head;
         while (current != null) {
@@ -80,6 +91,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
     } //print
 
+    /**
+    * Items in list are printed to standard output in reverse order.
+    */
     public void printReverse() {
 
         NodeType<T> temp = head;
@@ -98,10 +112,19 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     } //printReverse
 
+    /**
+    * Takes input from user for a lower and upper bound (inclusive)
+    * for a range of values to be deleted from the list.
+    * @param lower
+    * @param upper
+    */
     public void deleteSubsection() {
 
     } //deleteSubsection
 
+    /** Reverses the original list.
+    * Cannot take elements from original list and create a new list in reverse order.
+    */
     public void reverseList() {
         if (length == 1) {
             return;
@@ -125,6 +148,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     } //reverseList
 
+    /**
+    * Swaps every other node in the list.
+    */
     public void swapAlternate() {
 
     } //swapAlternate
