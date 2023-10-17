@@ -107,7 +107,7 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
 
                 } //distinguishing between item types
 
-                System.out.print("The list is: ");
+                System.out.print("\nThe list is: ");
                 list.print();
                 System.out.print("\nThe reverse list: ");
                 list.printReverse();
@@ -116,21 +116,33 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
 
             else if (command.equals("d")) {
 
+                System.out.print("\nThe list is: ");
+                list.print();
+                System.out.print("\nEnter an item to delete: ");
+
                 if (listType.equals("s")) {
                     String item = scanner.next();
+                    stringList.deleteItem(item);
 
                 } else if (listType.equals("i")) {
                     int item = scanner.nextInt();
+                    intList.deleteItem(item);
 
                 } else if (listType.equals("d")) {
                     double item = scanner.nextDouble();
-
+                    doubleList.deleteItem(item);
                 } //distinguishing between item types
+
+                System.out.print("The list is: ");
+                list.print();
+                System.out.print("\nThe reverse list: ");
+                list.printReverse();
 
             } //delete value
 
             else if (command.equals("p")) {
-
+                System.out.print("\nThe list is: ");
+                list.print();
             }  //print list
 
             else if (command.equals("l")) {
@@ -144,6 +156,11 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
             } //print reverse
 
             else if (command.equals("r")) {
+                System.out.print("\nThe original list: ");
+                list.print();
+                System.out.print("\nThe reversed list: ");
+                list.reverseList();
+                list.print();
 
             } //reverse list
 
