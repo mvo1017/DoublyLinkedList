@@ -2,7 +2,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.Scanner;
 
-public class DoublyLinkedListDriver {
+public class DoublyLinkedListDriver<T extends Comparable<T>> {
     public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter list type (i - int, d - double, s - string): ");
@@ -24,7 +24,9 @@ public class DoublyLinkedListDriver {
     System.out.println("Invalid choice!");
     return;
     } 
-
+    DoublyLinkedList<Integer> intList = new DoublyLinkedList<>();
+    DoublyLinkedList<Double> doubleList = new DoublyLinkedList<>();
+    DoublyLinkedList<String> stringList = new DoublyLinkedList<>();
 
     DoublyLinkedList<?> list;
     try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -33,7 +35,6 @@ public class DoublyLinkedListDriver {
 
     //creating list for integers    
     case "i":
-    DoublyLinkedList<Integer> intList = new DoublyLinkedList<>();
     while ((line = br.readLine()) != null) {
         for(String item : line.split("\\s+")) {
             intList.insertItem(Integer.parseInt(item));
@@ -44,7 +45,6 @@ public class DoublyLinkedListDriver {
 
     //creating list for doubles
     case "d":
-    DoublyLinkedList<Double> doubleList = new DoublyLinkedList<>();
     while ((line = br.readLine()) != null) {
         for(String item : line.split("\\s+")) {
             doubleList.insertItem(Double.parseDouble(item));
@@ -55,9 +55,10 @@ public class DoublyLinkedListDriver {
 
     //creating list for Strings
     case "s":
-    DoublyLinkedList<String> stringList = new DoublyLinkedList<>();
     while ((line = br.readLine()) != null) {
-    stringList.insertItem(line);
+        for(String item : line.split("\\s+")) {
+            stringList.insertItem(item);
+        } //for
     } //while
     list = stringList;
     break;
@@ -75,7 +76,7 @@ public class DoublyLinkedListDriver {
     list.print();
 
     //list of commands for user
-    System.out.println("/nCommands: /n(i) - Insert value/n(d) - Delete value/n(p) - Print list/n(l) - Length/n(t) - Print reverse/n(r) - Reverse list/n(b) - Delete Subsection/n(s) - Swap Alternate/n(q) - Quit program");
+    System.out.println("\nCommands: \n(i) - Insert value\n(d) - Delete value\n(p) - Print list\n(l) - Length\n(t) - Print reverse\n(r) - Reverse list\n(b) - Delete Subsection\n(s) - Swap Alternate\n(q) - Quit program");
 
         System.out.print("Enter a command: ");
 
@@ -85,10 +86,46 @@ public class DoublyLinkedListDriver {
 
         while (running) {
             if (command.equals("i")) {
+                System.out.print("The list is: ");
+                list.print();
+                System.out.print("\nEnter an item to insert: ");
                 
+                if (listType.equals("s")) {
+                    String item = scanner.next();
+                    stringList.insertItem(item);
+                    list = stringList;
+
+                } else if (listType.equals("i")) {
+                    int item = scanner.nextInt();
+                    intList.insertItem(item);
+                    list = intList;
+
+                } else if (listType.equals("d")) {
+                    double item = scanner.nextDouble();
+                    doubleList.insertItem(item);
+                    list = doubleList;
+
+                } //distinguishing between item types
+
+                System.out.print("The list is: ");
+                list.print();
+                System.out.print("\nThe reverse list: ");
+                list.printReverse();
+
             } //insert value
 
             else if (command.equals("d")) {
+
+                if (listType.equals("s")) {
+                    String item = scanner.next();
+
+                } else if (listType.equals("i")) {
+                    int item = scanner.nextInt();
+
+                } else if (listType.equals("d")) {
+                    double item = scanner.nextDouble();
+
+                } //distinguishing between item types
 
             } //delete value
 
@@ -97,11 +134,13 @@ public class DoublyLinkedListDriver {
             }  //print list
 
             else if (command.equals("l")) {
+                System.out.println("The length of the list is " + list.length());
 
             } //length
 
             else if (command.equals("t")) {
-
+                System.out.print("The reverse list: ");
+                list.printReverse();
             } //print reverse
 
             else if (command.equals("r")) {

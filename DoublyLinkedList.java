@@ -58,6 +58,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         //inserting in the middle of list. general case
         insert.next = temp;
         insert.back = temp.back;
+        temp.back.next = insert;
         temp.back = insert;
         length++;
 
