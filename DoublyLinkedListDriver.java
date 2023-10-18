@@ -78,109 +78,118 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
     //list of commands for user
     System.out.println("\nCommands: \n(i) - Insert value\n(d) - Delete value\n(p) - Print list\n(l) - Length\n(t) - Print reverse\n(r) - Reverse list\n(b) - Delete Subsection\n(s) - Swap Alternate\n(q) - Quit program");
 
-        System.out.print("Enter a command: ");
+    boolean running = true;
 
-        String command = scanner.next();
+    while (running) {
 
-        boolean running = true;
+    System.out.print("\nEnter a command: ");
 
-        while (running) {
-            if (command.equals("i")) {
-                System.out.print("The list is: ");
-                list.print();
-                System.out.print("\nEnter an item to insert: ");
-                
-                if (listType.equals("s")) {
-                    String item = scanner.next();
-                    stringList.insertItem(item);
-                    list = stringList;
+    String command = scanner.next();
 
-                } else if (listType.equals("i")) {
-                    int item = scanner.nextInt();
-                    intList.insertItem(item);
-                    list = intList;
+        if (command.equals("i")) {
+            System.out.print("\nThe list is: ");
+            list.print();
+            System.out.print("\nEnter an item to insert: ");
+            
+            if (listType.equals("s")) {
+                String item = scanner.next();
+                stringList.insertItem(item);
+                list = stringList;
 
-                } else if (listType.equals("d")) {
-                    double item = scanner.nextDouble();
-                    doubleList.insertItem(item);
-                    list = doubleList;
+            } else if (listType.equals("i")) {
+                int item = scanner.nextInt();
+                intList.insertItem(item);
+                list = intList;
 
-                } //distinguishing between item types
+            } else if (listType.equals("d")) {
+                double item = scanner.nextDouble();
+                doubleList.insertItem(item);
+                list = doubleList;
 
-                System.out.print("\nThe list is: ");
-                list.print();
-                System.out.print("\nThe reverse list: ");
-                list.printReverse();
+            } //distinguishing between item types
 
-            } //insert value
+            System.out.print("\nThe list is: ");
+            list.print();
+            System.out.print("\nThe reverse list: ");
+            list.printReverse();
 
-            else if (command.equals("d")) {
+        } //insert value
 
-                System.out.print("\nThe list is: ");
-                list.print();
-                System.out.print("\nEnter an item to delete: ");
+        else if (command.equals("d")) {
 
-                if (listType.equals("s")) {
-                    String item = scanner.next();
-                    stringList.deleteItem(item);
+            System.out.print("\nThe list is: ");
+            list.print();
+            System.out.print("\nEnter an item to delete: ");
 
-                } else if (listType.equals("i")) {
-                    int item = scanner.nextInt();
-                    intList.deleteItem(item);
+            if (listType.equals("s")) {
+                String item = scanner.next();
+                stringList.deleteItem(item);
 
-                } else if (listType.equals("d")) {
-                    double item = scanner.nextDouble();
-                    doubleList.deleteItem(item);
-                } //distinguishing between item types
+            } else if (listType.equals("i")) {
+                int item = scanner.nextInt();
+                intList.deleteItem(item);
 
-                System.out.print("The list is: ");
-                list.print();
-                System.out.print("\nThe reverse list: ");
-                list.printReverse();
+            } else if (listType.equals("d")) {
+                double item = scanner.nextDouble();
+                doubleList.deleteItem(item);
+            } //distinguishing between item types
 
-            } //delete value
+            System.out.print("\nThe list is: ");
+            list.print();
+            System.out.print("\nThe reverse list: ");
+            list.printReverse();
 
-            else if (command.equals("p")) {
-                System.out.print("\nThe list is: ");
-                list.print();
-            }  //print list
+        } //delete value
 
-            else if (command.equals("l")) {
-                System.out.println("The length of the list is " + list.length());
+        else if (command.equals("p")) {
+            System.out.print("\nThe list is: ");
+            list.print();
+        }  //print list
 
-            } //length
+        else if (command.equals("l")) {
+            System.out.println("\nThe length of the list is " + list.length());
 
-            else if (command.equals("t")) {
-                System.out.print("The reverse list: ");
-                list.printReverse();
-            } //print reverse
+        } //length
 
-            else if (command.equals("r")) {
-                System.out.print("\nThe original list: ");
-                list.print();
-                System.out.print("\nThe reversed list: ");
-                list.reverseList();
-                list.print();
+        else if (command.equals("t")) {
+            System.out.print("\nThe reverse list: ");
+            list.printReverse();
+        } //print reverse
 
-            } //reverse list
+        else if (command.equals("r")) {
+            System.out.print("\nThe original list: ");
+            list.print();
+            System.out.print("\nThe reversed list: ");
+            list.reverseList();
+            list.print();
 
-            else if (command.equals("b")) {
+        } //reverse list
 
-            } //delete subsection
+        else if (command.equals("b")) {
 
-            else if (command.equals("s")) {
+        } //delete subsection
 
-            } //swap alternate
+        else if (command.equals("s")) {
+            System.out.print("\nThe original list: ");
+            list.print();
+            System.out.print("\nThe modified list: ");
+            list.swapAlternate();
+            list.print();
+            System.out.print("\nThe reverse list: ");
+            list.printReverse();
 
-            else if (command.equals("q")) {
-                running = false;
-            } //quit program
 
-            else {
-                System.out.println("Invalid choice! Please try again.");
-            } //invalid input
+        } //swap alternate
 
-        } //while
+        else if (command.equals("q")) {
+            running = false;
+        } //quit program
+
+        else {
+            System.out.println("Invalid choice! Please try again.");
+        } //invalid input
+
+    } //while
 System.out.println("Exiting program...\n");
 scanner.close();
 System.exit(0);

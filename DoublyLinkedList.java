@@ -95,6 +95,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     /**
     * Items in list are printed to standard output in reverse order.
     */
+    //MONG
     public void printReverse() {
 
         NodeType<T> temp = head;
@@ -126,6 +127,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     /** Reverses the original list.
     * Cannot take elements from original list and create a new list in reverse order.
     */
+    //MONG
     public void reverseList() {
         if (length == 1) {
             return;
@@ -152,7 +154,41 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     /**
     * Swaps every other node in the list.
     */
+    //MONG
     public void swapAlternate() {
+        if (length <= 1) {
+            return;
+        } //do nothing for list of size 1 or 0
+        
+        NodeType<T> temp = head;
+
+        /*if (temp.next != null) {
+            temp = temp.next;
+            temp.next.next = temp.next;
+            temp.next = temp.back;
+            temp.next.back = temp;
+            temp.next.next.back = temp.next;
+            //swap nodes
+
+            if (temp.next.next != null) {
+                temp = temp.next.next;
+            } //continue swapping rest of nodes
+        } //if
+        */
+        boolean done = false;
+        while (temp.next != null && !done) {
+            if (temp.next != null) {
+                T tempInfo = temp.info;
+                temp.info = temp.next.info;
+                temp.next.info = tempInfo;
+            }
+            if (temp.next.next != null) {
+                 temp = temp.next.next;
+            } else {
+                done = true;
+            }
+            
+        }
 
     } //swapAlternate
 }
